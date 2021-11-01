@@ -11,18 +11,30 @@ interface SongDao {
     @Insert
     fun addData(favoriteEntity: FavoriteList?)
 
+    @Query("SELECT * FROM favoritelist")
+    fun getRecent(): List<RecentList>
+
     @Query("select * from favoritelist WHERE fav=:Fav")
     fun getFavoriteData(Fav: Boolean): List<FavoriteList?>?
 
-//    @Query("SELECT EXISTS (SELECT 1 FROM favoritelist WHERE id=:id)")
-//    fun isFavorite(id: String): Int
+    @Query("select * from favoritelist WHERE id=:Id")
+    fun getRecentData(Id: Boolean): List<RecentList?>?
 
     @Delete
     fun delete(favoriteEntity: FavoriteList?)
 
-    @Query("UPDATE favoritelist SET fav=:Fav WHERE id=:Id")
-    fun setFav(Fav:Boolean , Id:Int)
+//    @Query("select * from favoritelist")
+//    fun getFavoriteData(): List<FavoriteList?>?
+//
+//    @Query("SELECT EXISTS (SELECT 1 FROM favoritelist WHERE id=:id)")
+//    fun isFavorite(id: Int): Int
 
-    @Query("SELECT id FROM favoritelist WHERE name=:Name")
-    fun getId(Name:String?) :Int?
+    @Query("UPDATE favoritelist SET fav=:Fav WHERE id=:Id")
+    fun setFav(Fav: Boolean, Id: Int)
+
+    @Query("SELECT * FROM favoritelist WHERE name=:Name")
+    fun getId(Name: String?): Int
+
+    @Query("SELECT EXISTS (SELECT 1 FROM favoritelist WHERE id=:id)")
+    fun isFavorite(id: String): Int
 }

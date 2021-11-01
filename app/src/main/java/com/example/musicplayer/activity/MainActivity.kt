@@ -41,36 +41,36 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        arrayList = ArrayList<PlaylistModel>()
+//        binding.mic.setOnClickListener {
+//            val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+//            intent.putExtra(
+//                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+//                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+//            )
+//            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+//            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Say Something...")
+//
+//            try {
+//                activityResultLauncher.launch(intent)
+//            } catch (e: ActivityNotFoundException) {
+//                Toast.makeText(applicationContext, "Device not supported", Toast.LENGTH_SHORT)
+//                    .show()
+//            }
+//        }
+//        activityResultLauncher =
+//            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+//                if (it!!.resultCode == RESULT_OK && it!!.data != null) {
+//                    val speechToText =
+//                        it!!.data!!.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<Editable>
+//                    binding.editText.text = speechToText[0]
+//                }
+//            }
 
-        binding.mic.setOnClickListener {
-            val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-            intent.putExtra(
-                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
-            )
-            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Say Something...")
-
-            try {
-                activityResultLauncher.launch(intent)
-            } catch (e: ActivityNotFoundException) {
-                Toast.makeText(applicationContext, "Device not supported", Toast.LENGTH_SHORT)
-                    .show()
-            }
-        }
-        activityResultLauncher =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                if (it!!.resultCode == RESULT_OK && it!!.data != null) {
-                    val speechToText =
-                        it!!.data!!.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<Editable>
-                    binding.editText.text = speechToText[0]
-                }
-            }
-
-        val transaction12 =
+        val transaction =
             supportFragmentManager.beginTransaction()
-        transaction12.replace(R.id.con, HomeFragment())
-        transaction12.commit()
+        transaction.replace(R.id.con, HomeFragment())
+        transaction.commit()
 
         binding.bottomNavView.setOnNavigationItemSelectedListener { item: MenuItem ->
             when (item.itemId) {

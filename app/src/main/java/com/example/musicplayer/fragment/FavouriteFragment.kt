@@ -22,19 +22,22 @@ class FavouriteFragment : Fragment(), ItemClickListener {
     private lateinit var binding: FragmentFavouriteBinding
     lateinit var database: FavoriteDatabase
     lateinit var model: ArrayList<PlaylistModel>
+    lateinit var adapter: FavoriteAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding = FragmentFavouriteBinding.inflate(layoutInflater, container, false)
-
+        model = ArrayList<PlaylistModel>()
         database = FavoriteDatabase.getInstance(requireContext())
-        val a = database.songDao().getFavoriteData(false)
-        Log.d("TAG", "onCreateView: $a[0]")
+
+        val a = database.songDao().getFavoriteData(true)
+        Log.d("Fav", "onCreateView: $a[0]")
+        adapter = FavoriteAdapter(a, requireContext())
         binding.recyclerFavFragment.setHasFixedSize(true)
         binding.recyclerFavFragment.layoutManager = LinearLayoutManager(context)
-        binding.recyclerFavFragment.adapter = SongAdapter(requireContext(), model, this)
+        binding.recyclerFavFragment.adapter = adapter
 
         return binding.root
     }

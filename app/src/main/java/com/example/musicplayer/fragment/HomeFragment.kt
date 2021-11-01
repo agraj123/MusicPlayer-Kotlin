@@ -2,6 +2,7 @@ package com.example.musicplayer.fragment
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
@@ -13,6 +14,9 @@ import androidx.core.app.ActivityCompat
 import android.provider.MediaStore
 import android.util.Log
 import android.view.*
+import androidx.activity.result.ActivityResultLauncher
+import androidx.appcompat.widget.SearchView
+import com.example.musicplayer.R
 import com.example.musicplayer.utils.ItemClickListener
 import com.example.musicplayer.adapter.SongAdapter
 import com.example.musicplayer.model.PlaylistModel
@@ -20,6 +24,8 @@ import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 
 import com.example.musicplayer.databinding.FragmentHomeBinding
+import java.util.*
+import java.util.Locale.filter
 
 class HomeFragment : Fragment(), ItemClickListener {
 
@@ -27,6 +33,7 @@ class HomeFragment : Fragment(), ItemClickListener {
 
     private lateinit var arrayList: ArrayList<PlaylistModel>
     private lateinit var adapter: SongAdapter
+    lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
 
     private var mediaPlayer: MediaPlayer? = null
     private var startTime = 0.0
@@ -43,6 +50,7 @@ class HomeFragment : Fragment(), ItemClickListener {
     ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
+
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.READ_EXTERNAL_STORAGE
@@ -56,19 +64,6 @@ class HomeFragment : Fragment(), ItemClickListener {
         } else {
             getData()
         }
-
-//        binding.addToFavourite.setOnClickListener {
-//            database?.songDao()?.addData(favoriteList = FavoriteList())
-//            Toast.makeText(context, "Successfully Added...", Toast.LENGTH_SHORT).show()
-//        }
-//        binding.addToFavourite.setOnLongClickListener {
-//            val intent = Intent(context?.applicationContext,
-//                CurrentSong::class.java)
-//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//            context?.applicationContext?.startActivity(intent)
-//
-//            return@setOnLongClickListener false
-//        }
 
         binding.btn10SecNextCurrent.setOnClickListener {
             val temp = startTime
@@ -165,6 +160,40 @@ class HomeFragment : Fragment(), ItemClickListener {
         return binding.root
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.search_menu, menu)
+        val searchItem = menu.findItem(R.id.item_search)
+        val searchView: SearchView = searchItem?.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    filter(text = newText)
+                }
+                return false
+            }
+        })
+        return super.onCreateOptionsMenu(menu, menuInflater)
+    }
+
+    fun filter(text: String) {
+        val filteredlist: ArrayList<PlaylistModel> = ArrayList()
+        for (item in arrayList) {
+            if (item.getSong().lowercase(Locale.getDefault())
+                    .contains(text.lowercase(Locale.getDefault()))
+            ) {
+                filteredlist.add(item)
+            }
+        }
+        if (filteredlist.isEmpty()) {
+            Toast.makeText(context, "No Data Found..", Toast.LENGTH_SHORT).show()
+        } else {
+            adapter.filterList(filteredlist)
+        }
+    }
 
     @SuppressLint("Recycle")
     private fun getMusic() {

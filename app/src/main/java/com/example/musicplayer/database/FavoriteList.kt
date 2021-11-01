@@ -17,6 +17,9 @@ data class FavoriteList(
 
     @ColumnInfo(name = "fav")
     var fav: Boolean,
+
+    @ColumnInfo(name = "rec")
+    val rec: Boolean,
 ) {
 
 }

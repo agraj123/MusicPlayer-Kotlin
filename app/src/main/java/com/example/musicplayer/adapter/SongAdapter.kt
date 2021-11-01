@@ -9,15 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicplayer.utils.ItemClickListener
 import com.example.musicplayer.R
-import com.example.musicplayer.activity.MainActivity
 import com.example.musicplayer.database.FavoriteDatabase
 import com.example.musicplayer.database.FavoriteList
 import com.example.musicplayer.model.PlaylistModel
-import com.squareup.picasso.Picasso
 import java.io.File
 
 class SongAdapter(
@@ -49,20 +46,26 @@ class SongAdapter(
 
         database = FavoriteDatabase.getInstance(context)
         database.songDao()
-            .addData(FavoriteList(0, arrayList[position].name, arrayList[position].artists, false))
+            .addData(FavoriteList(0,
+                arrayList[position].name,
+                arrayList[position].artists,
+                false, rec = false))
 
         holder.fav.setOnClickListener {
-            val song = database.songDao().getId(arrayList[position].name)
-            Log.d("TAG", "onBindViewHolder: $song ")
 
-            if (song != null) {
-                database.songDao().setFav(true, song)
-                Toast.makeText(context, song, Toast.LENGTH_SHORT).show()
-            }
+            val song = database.songDao().getId(arrayList[position].artists)
+            Log.d("TAG", "onBindViewHolder: $song")
+
+            database.songDao().setFav(true, song)
+            holder.fav.setImageResource(R.drawable.ic_favorite)
+            Log.d("TAG", "onBindViewHolder: $song")
+//                Toast.makeText(context, song, Toast.LENGTH_SHORT).show()
         }
 
         holder.itemView.setOnClickListener {
             try {
+                val recent = database.songDao().getRecentData(true)
+                Log.d("TAG", "onBindViewHolder: $recent")
                 val path = arrayList[position].path
                 val file = File(path)
                 if (file.exists()) {
