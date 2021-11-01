@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">MusicPlayer</string>
+    <string name="splash_logo">splash_logo</string>
+    <string name="music_player">Music Player</string>
+    <string name="let_s_play_music">Let\'s play music</string>
+    <string name="search_music">search music</string>
+    <string name="settings_menu">Settings</string>
+    <string name="favourite_menu">Favourite</string>
+    <string name="recent_menu">Recent</string>
+    <string name="home_menu">Home</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sample_text_design">sample text</string>
+    <string name="artist_design">artist</string>
+    <string name="song_name_current_song">song name</string>
+    <string name="imagecurrentsongimg">imageCurrentSongIMG</string>
+    <string name="song_name_recent_name">song name</string>
+    <string name="song_name_favourite">song name</string>
+    <string name="artist_favourite">artist</string>
+    <string name="some_text_settings">some text</string>
+    <string name="all_settings_Settings">All Settings</string>
+    <string name="backpress_Current">backPress</string>
+    <string name="favclickcurrent">favClickCurrent</string>
+    <string name="prev_Current">prev</string>
+    <string name="_10sec_Current">10Sec</string>
+    <string name="play_Current">play</string>
+    <string name="_10secfor_Current">10SecFor</string>
+    <string name="next_Current">next</string>
+    <string name="now_playing_Current">Now Playing</string>
+    <string name="speech_menu">Speech</string>
+    <string name="search_menu">search</string>
+    <string name="artist_currentpagesong">artist</string>
+    <string name="start_second_current">start second</string>
+    <string name="pause_current">pause current</string>
+    <string name="copyright_169">Copyright ©</string>
+    <string name="imagecurrentimage">imageCurrentImage</string>
+    <string name="imagetextsample">imageTextSample</string>
+    <string name="splashimage_splash">splashImage</string>
+    <string name="favimagesample">favImageSample</string>
+    <string name="imagesettings">imageSettings</string>
+    <string name="recentplayedimage">recentPlayedImage</string>
+    <string name="recently_played_text_design">Recently Played</string>
+    <string name="favourite_songs_text_design">Favourite Songs</string>
+</resources>
