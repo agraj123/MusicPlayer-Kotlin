@@ -10,6 +10,10 @@ import androidx.room.Room
 abstract class FavoriteDatabase : RoomDatabase() {
     abstract fun songDao(): SongDao
 
+//    suspend fun updateProduct(favoriteList: FavoriteList) {
+//        songDao().updateProduct(favoriteList)
+//    }
+
     companion object {
 
         private var instance: FavoriteDatabase? = null

@@ -17,8 +17,8 @@
             android:id="@+id/imageFavLayout"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/splashscreen"
-            android:contentDescription="@string/favimagesample" />
+            android:contentDescription="@string/favimagesample"
+            android:src="@drawable/splashscreen" />
 
         <TextView
             android:id="@+id/textTitleFavDesign"
@@ -40,6 +40,15 @@
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@id/imageFavLayout"
             android:text="@string/artist_favourite" />
+
+        <ImageView
+            android:id="@+id/ImgFavDesign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_favorite" />
 
     </RelativeLayout>
 

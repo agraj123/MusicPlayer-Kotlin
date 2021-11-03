@@ -20,6 +20,9 @@ data class FavoriteList(
 
     @ColumnInfo(name = "rec")
     val rec: Boolean,
+
+    @ColumnInfo(name = "product_save")
+    val product_save : Int
 ) {
 
 }

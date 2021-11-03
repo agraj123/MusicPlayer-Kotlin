@@ -26,51 +26,53 @@
 
     <!--    </androidx.appcompat.widget.Toolbar>-->
 
-    <RelativeLayout
-        android:id="@+id/relative"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/relative"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:weightSum="5"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent">-->
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/searchdesign"
-            android:drawableEnd="@drawable/ic_baseline_search_24"
-            android:hint="@string/search_music"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textColorHint="#fff" />
+    <!--        <EditText-->
+    <!--            android:id="@+id/editText"-->
+    <!--            android:layout_width="300dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_weight="4"-->
+    <!--            android:background="@drawable/searchdesign"-->
+    <!--            android:drawableEnd="@drawable/ic_baseline_search_24"-->
+    <!--            android:hint="@string/search_music"-->
+    <!--            android:importantForAutofill="no"-->
+    <!--            android:inputType="text"-->
+    <!--            android:padding="10dp"-->
+    <!--            android:textColorHint="#fff" />-->
 
-        <ImageView
-            android:id="@+id/mic"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/editText"
-            android:src="@drawable/ic_baseline_mic_24"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="10dp"
-            android:contentDescription="@string/imagetextsample" />
-    </RelativeLayout>
+    <!--        <ImageView-->
+    <!--            android:id="@+id/mic"-->
+    <!--            android:layout_width="25dp"-->
+    <!--            android:layout_height="25dp"-->
+    <!--            android:layout_gravity="center_vertical"-->
+    <!--            android:layout_marginStart="10dp"-->
+    <!--            android:layout_marginEnd="8dp"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:contentDescription="@string/imagetextsample"-->
+    <!--            android:src="@drawable/ic_baseline_mic_24"-->
+    <!--            tools:ignore="MissingConstraints"-->
+    <!--            tools:layout_editor_absoluteY="10dp" />-->
+    <!--    </LinearLayout>-->
 
     <FrameLayout
         android:id="@+id/con"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/relative">
+        app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 

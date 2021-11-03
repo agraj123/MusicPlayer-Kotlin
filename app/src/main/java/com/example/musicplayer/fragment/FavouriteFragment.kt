@@ -49,6 +49,8 @@ class FavouriteFragment : Fragment(), ItemClickListener {
         stime: Int,
         etime: Int,
         player: MediaPlayer,
+        song_index: Int,
+        Pos: Int
     ) {
         TODO("Not yet implemented")
     }

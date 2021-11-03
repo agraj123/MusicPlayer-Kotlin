@@ -13,9 +13,9 @@ import com.example.musicplayer.database.RecentList
 import com.example.musicplayer.model.PlaylistModel
 import com.squareup.picasso.Picasso
 
-class RecentAdapter(recentListEntity: List<RecentList?>?, context: Context) :
+class RecentAdapter(recentListEntity: List<FavoriteList?>?, context: Context) :
     RecyclerView.Adapter<RecentAdapter.ViewHolder>() {
-    private val recentListEntity: List<RecentList?>? by lazy { recentListEntity }
+    private val recentListEntity: List<FavoriteList?>? by lazy { recentListEntity }
     var context: Context = context
     var arrayList = recentListEntity
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,7 +25,7 @@ class RecentAdapter(recentListEntity: List<RecentList?>?, context: Context) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.name.text = arrayList!![position]!!.artist
+        holder.name.text = arrayList!![position]!!.name
     }
 
     override fun getItemCount(): Int {

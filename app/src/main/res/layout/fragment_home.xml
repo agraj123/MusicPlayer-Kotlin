@@ -6,10 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".fragment.HomeFragment">
 
+    <LinearLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:background="@drawable/searchdesign"
+            android:drawableEnd="@drawable/ic_baseline_search_24"
+            android:hint="@string/search_music"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColorHint="#fff" />
+
+        <ImageView
+            android:id="@+id/mic"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/imagetextsample"
+            android:src="@drawable/ic_baseline_mic_24"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="10dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/getDataBtn"
+        android:background="@drawable/maingradiant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Store Song"
+        app:layout_constraintTop_toBottomOf="@id/relative" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerHomeFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="140dp"
+        app:layout_constraintTop_toBottomOf="@+id/getDataBtn"
+        tools:layout_editor_absoluteX="16dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewHome"
