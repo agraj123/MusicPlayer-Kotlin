@@ -5,14 +5,11 @@ import androidx.room.RoomDatabase
 
 import androidx.room.Database
 import androidx.room.Room
+import kotlinx.coroutines.flow.Flow
 
-@Database(entities = [FavoriteList::class], version = 4)
+@Database(entities = [FavoriteEntity::class], version = 4)
 abstract class FavoriteDatabase : RoomDatabase() {
     abstract fun songDao(): SongDao
-
-//    suspend fun updateProduct(favoriteList: FavoriteList) {
-//        songDao().updateProduct(favoriteList)
-//    }
 
     companion object {
 

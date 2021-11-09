@@ -8,12 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.musicplayer.R
 import com.example.musicplayer.adapter.FavoriteAdapter
+import com.example.musicplayer.adapter.PlayAdapter
 import com.example.musicplayer.adapter.SongAdapter
 import com.example.musicplayer.database.FavoriteDatabase
-import com.example.musicplayer.database.FavoriteList
+import com.example.musicplayer.database.FavoriteEntity
 import com.example.musicplayer.databinding.FragmentFavouriteBinding
 import com.example.musicplayer.model.PlaylistModel
 import com.example.musicplayer.utils.ItemClickListener
@@ -21,20 +20,23 @@ import com.example.musicplayer.utils.ItemClickListener
 class FavouriteFragment : Fragment(), ItemClickListener {
     private lateinit var binding: FragmentFavouriteBinding
     lateinit var database: FavoriteDatabase
-    lateinit var model: ArrayList<PlaylistModel>
-    lateinit var adapter: FavoriteAdapter
+    lateinit var arrayList: List<FavoriteEntity>
+    lateinit var adapter: SongAdapter
+    private lateinit var playAdapter: List<PlaylistModel>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentFavouriteBinding.inflate(layoutInflater, container, false)
-        model = ArrayList<PlaylistModel>()
         database = FavoriteDatabase.getInstance(requireContext())
 
-        val a = database.songDao().getFavoriteData(true)
+        arrayList = database.songDao().fetchSave()
+        playAdapter = listOf(PlaylistModel("", "", ""))
+
+        val a = database.songDao().setFavData(1)
         Log.d("Fav", "onCreateView: $a[0]")
-        adapter = FavoriteAdapter(a, requireContext())
+        adapter = SongAdapter(requireContext(), arrayList, playAdapter, this)
         binding.recyclerFavFragment.setHasFixedSize(true)
         binding.recyclerFavFragment.layoutManager = LinearLayoutManager(context)
         binding.recyclerFavFragment.adapter = adapter
@@ -50,7 +52,7 @@ class FavouriteFragment : Fragment(), ItemClickListener {
         etime: Int,
         player: MediaPlayer,
         song_index: Int,
-        Pos: Int
+        Pos: Int,
     ) {
         TODO("Not yet implemented")
     }

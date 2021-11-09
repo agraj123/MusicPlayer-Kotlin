@@ -4,8 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "recentlist")
-data class RecentList(
+@Entity(tableName = "favoritelist")
+data class FavoriteEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
 
@@ -14,6 +14,15 @@ data class RecentList(
 
     @ColumnInfo(name = "name")
     var name: String?,
+
+    @ColumnInfo(name = "fav")
+    var fav: Boolean,
+
+    @ColumnInfo(name = "rec")
+    val rec: Boolean,
+
+    @ColumnInfo(name = "product_save")
+    val product_save : Int
 ) {
 
 }

@@ -41,4 +41,6 @@
     <string name="recentplayedimage">recentPlayedImage</string>
     <string name="recently_played_text_design">Recently Played</string>
     <string name="favourite_songs_text_design">Favourite Songs</string>
+    <string name="fetch_song_home">Fetch Song</string>
+    <string name="store_song_favv">Store Song</string>
 </resources>

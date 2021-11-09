@@ -3,21 +3,17 @@ package com.example.musicplayer.adapter
 import android.content.Context
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.musicplayer.database.FavoriteList
+import com.example.musicplayer.database.FavoriteEntity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import com.example.musicplayer.R
-import com.example.musicplayer.database.RecentList
-import com.example.musicplayer.model.PlaylistModel
-import com.squareup.picasso.Picasso
 
-class RecentAdapter(recentListEntity: List<FavoriteList?>?, context: Context) :
+class RecentAdapter(recentEntityEntity: List<FavoriteEntity?>?, context: Context) :
     RecyclerView.Adapter<RecentAdapter.ViewHolder>() {
-    private val recentListEntity: List<FavoriteList?>? by lazy { recentListEntity }
+    private val recentEntityEntity: List<FavoriteEntity?>? by lazy { recentEntityEntity }
     var context: Context = context
-    var arrayList = recentListEntity
+    var arrayList = recentEntityEntity
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
             LayoutInflater.from(parent.context).inflate(R.layout.recentlayout, parent, false)
@@ -29,7 +25,7 @@ class RecentAdapter(recentListEntity: List<FavoriteList?>?, context: Context) :
     }
 
     override fun getItemCount(): Int {
-        return recentListEntity!!.size
+        return recentEntityEntity!!.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
